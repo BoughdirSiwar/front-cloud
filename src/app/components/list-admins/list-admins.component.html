@@ -1,0 +1,214 @@
+<!-- Start: Page Banner -->
+<section class="page-banner services-banner">
+  <div class="container">
+    <div class="banner-header">
+      <h2>Cart Page</h2>
+      <span class="underline center"></span>
+      <p class="lead">Proin ac eros pellentesque dolor pharetra tempo.</p>
+    </div>
+    <div class="breadcrumb">
+      <ul>
+        <li><a href="index-2.html">Home</a></li>
+        <li>Dashboard</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- End: Page Banner -->
+<!-- Start: Cart Section -->
+<div class="site-content" id="content">
+  <div class="content-area" id="primary">
+    <main class="site-main" id="main">
+      <div class="cart-main">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="page type-page status-publish hentry">
+                <div class="entry-content">
+                  <div class="woocommerce table-tabs" id="responsiveTabs">
+                    <h2 style="color: #F26D35; text-align: center">Gestion des Administrateurs</h2>
+                    <div class="tab-content">
+                      <div class="tab-pane fade in active" id="sectionA">
+                        <div class="filter-toggle">
+                          <button (click)="affecter()"
+                                  style="float: right; background-color: white; border-color: #e84500"><a
+                            data-toggle="modal" href="#myModalupd" role="button"><i class="fa fa-plus"
+                                                                                    style="margin-right: 3px"></i>
+                            Ajouter un
+                            Administrateur</a>
+                          </button>
+                        </div>
+                        <form action="http://libraria.demo.presstigers.com/cart-page.html" method="post">
+                          <table class="table table-bordered shop_table cart">
+                            <thead>
+                            <tr>
+                              <th class="product-name">x</th>
+                              <th class="product-name">Title</th>
+                              <th class="product-quantity">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let admin of listAdmins" class="cart_item">
+                              <td class="product-cbox" data-title="cbox">
+                                <span>
+                                  <input id="cbox3" type="checkbox" value="first_checkbox">
+                                </span>
+                              </td>
+                              <td class="product-name" data-title="Product">
+                                                                            <span class="product-thumbnail">
+                                                                                <a href="#"><img alt="cart-product-1"
+                                                                                  src="../../../assets/images/cart/cart-product-1.jpg"></a>
+                                                                            </span>
+                                <span class="product-detail">
+                                                                                <a href="#"><strong>{{admin.nom}}</strong></a>
+                                                                                <span><strong>Author:</strong> {{admin.prenom}}</span>
+                                                                                <span><strong>ISBN:</strong> {{admin.dateNaissance}}</span>
+                                                                            </span>
+                              </td>
+                              <td class="product-action" data-title="action">
+                                  <a class="dropdown-toggle" data-toggle="modal" href="#myModalupd" role="button" (click)="selectedValue(admin)">Modifier</a>
+                                  <a class="dropdown-toggle" (click)="supprimer(admin)">Supprimer</a>
+                              </td>
+                            </tr>
+
+                            </tbody>
+                          </table>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- .entry-content -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<!-- End: Cart Section -->
+
+<!-- Start: Social Network -->
+<section class="social-network section-padding">
+  <div class="container">
+    <div class="center-content">
+      <h2 class="section-title">Follow Us</h2>
+      <span class="underline center"></span>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <ul>
+      <li>
+        <a class="facebook" href="#" target="_blank">
+                            <span>
+                                <i class="fa fa-facebook-f"></i>
+                            </span>
+        </a>
+      </li>
+      <li>
+        <a class="twitter" href="#" target="_blank">
+                            <span>
+                                <i class="fa fa-twitter"></i>
+                            </span>
+        </a>
+      </li>
+      <li>
+        <a class="google" href="#" target="_blank">
+                            <span>
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+        </a>
+      </li>
+      <li>
+        <a class="rss" href="#" target="_blank">
+                            <span>
+                                <i class="fa fa-rss"></i>
+                            </span>
+        </a>
+      </li>
+      <li>
+        <a class="linkedin" href="#" target="_blank">
+                            <span>
+                                <i class="fa fa-linkedin"></i>
+                            </span>
+        </a>
+      </li>
+      <li>
+        <a class="youtube" href="#" target="_blank">
+                            <span>
+                                <i class="fa fa-youtube"></i>
+                            </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- End: Social Network -->
+
+<!-- End: Social Network -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal small fade" id="myModalupd" role="dialog"
+     tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+        <h3 id="myModalLabelupd"> {{methode}} un Administrateur</h3>
+      </div>
+      <form>
+        <div class="vl">
+          <div id="contenu">
+            <div class="panel" style="margin-top: 0%">
+
+
+              <div class="panel-body">
+
+                <input [(ngModel)]="admin.nom" class="form-control" id="nom" name="nom" placeholder="Nom"
+                       style="width: 100%;"
+                       type="text"/>
+                <br>
+                <input [(ngModel)]="admin.prenom" class="form-control" id="prenom" name="prenom" placeholder="Prenom"
+                       style="width: 100%;" type="text"/>
+                <br>
+                <input [(ngModel)]="admin.login" class="form-control" id="username" name="username"
+                       placeholder="username"
+                       type="text"/>
+                <br>
+                <input [(ngModel)]="admin.password" class="form-control" id="password" name="password"
+                       placeholder="Password"
+                       type="password" value="secret"/>
+                <br>
+                <input [value]="admin.dateNaissance" class="form-control" id="start" max="2021-06-29"
+                       min="1960-01-01" name="trip-start"
+                       name="date_naiss"
+                       placeholder="Date de Naissance" type="date"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="modal-footer">
+        <button aria-hidden="true" class="button" data-dismiss="modal" style="  border: none;
+                                           color: white;
+                                           padding: 10px 20px;
+                                           text-align: center;
+                                           text-decoration: none;
+                                           font-size: 16px;
+                                           border-radius: 12px;
+                                           background-color: #F26D35;
+                                   margin-left: 0%; " type="button">Annuler
+        </button>
+        <button (click)="ajouter()" [(ngModel)]="admin.dateNaissance" aria-hidden="true" class="button"
+                data-dismiss="modal" style="  border: none;
+                                           color: white;
+                                           padding: 10px 20px;
+                                           text-align: center;
+                                           text-decoration: none;
+                                           font-size: 16px;
+                                           border-radius: 12px;
+                                           background-color: #F26D35;
+                                   margin-left: 3%; " type="button">{{methode}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
