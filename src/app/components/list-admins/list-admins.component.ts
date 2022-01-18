@@ -35,7 +35,6 @@ export class ListAdminsComponent implements OnInit {
     this.adminService.deleteAdmin(admin.idAdmin).subscribe(next => {
       console.log(next);
       this.getListAdmin();
-
     })
   }
   ajouter() {
