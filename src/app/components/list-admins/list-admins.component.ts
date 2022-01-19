@@ -42,13 +42,15 @@ export class ListAdminsComponent implements OnInit {
       this.adminService.addAdmin(this.admin).subscribe(next => {
         if (next !== null) {
           console.log("Admin ajouté");
+          this.getListAdmin();
         }
       })
     }
     else{
       this.adminService.updateAdmin(this.admin).subscribe(next => {
       if (next !== null) {
-        console.log("Admin modifié")
+        console.log("Admin modifié");
+        this.getListAdmin();
       }
       })
     }

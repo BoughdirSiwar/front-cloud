@@ -13,6 +13,7 @@ import { ListAdminsComponent } from './components/list-admins/list-admins.compon
 import { ListBorrowedBooksComponent } from './components/list-borrowed-books/list-borrowed-books.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {DatePipe} from "@angular/common";
 
 // @ts-ignore
 @NgModule({
@@ -34,7 +35,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

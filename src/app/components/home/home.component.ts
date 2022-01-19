@@ -14,12 +14,12 @@ export class HomeComponent implements OnInit {
   constructor(private livreService: LivreService) { }
 
   ngOnInit(): void {
-    this.getListEtudiants();
+    this.getListLivres();
   }
   affecter(): void{
     this.methode = "Ajouter";
   }
-  getListEtudiants() {
+  getListLivres() {
     this.livreService.getLivres().subscribe( next => {
       console.log(next);
       this.listLivre = next;
@@ -33,22 +33,23 @@ export class HomeComponent implements OnInit {
   supprimer(livre: Livre){
     this.livreService.deleteLivre(livre.idLivre).subscribe(next => {
       console.log(next);
-      this.getListEtudiants();
+      this.getListLivres();
     })
   }
   ajouter() {
     if (this.methode === "Ajouter") {
       this.livreService.addLivre(this.livre).subscribe(next => {
         if (next !== null) {
-          console.log("Admin ajouté");
+          console.log("Livre ajouté");
+          this.getListLivres();
         }
       })
     }
     else{
       this.livreService.updateLivre(this.livre).subscribe(next => {
         if (next !== null) {
-          console.log("Admin modifié")
-          this.getListEtudiants();
+          console.log("Livre modifié")
+          this.getListLivres();
         }
       })
     }

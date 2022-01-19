@@ -40,14 +40,15 @@ export class ListStudentComponent implements OnInit {
     if (this.methode === "Ajouter") {
       this.etudiantService.addEtudiant(this.etudiant).subscribe(next => {
         if (next !== null) {
-          console.log("Admin ajouté");
+          console.log("Etudiant ajouté");
+          this.getListEtudiants();
         }
       })
     }
     else{
       this.etudiantService.updateEtudiant(this.etudiant).subscribe(next => {
         if (next !== null) {
-          console.log("Admin modifié")
+          console.log("Etudiant modifié")
           this.getListEtudiants();
         }
       })

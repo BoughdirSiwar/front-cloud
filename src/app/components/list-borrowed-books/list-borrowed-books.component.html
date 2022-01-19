@@ -30,152 +30,46 @@
                     <div class="tab-content">
                       <div id="sectionA" class="tab-pane fade in active">
                         <div class="filter-toggle">
-                          <button style="float: right; background-color: white; border-color: #e84500"><a  href="#myModalupd" role="button" data-toggle="modal"><i style="margin-right: 3px" class="fa fa-plus"></i>  Ajouter un Emprunt</a>
+                          <button (click)="affecter()" style="float: right; background-color: white; border-color: #e84500"><a  href="#myModalupd" role="button" data-toggle="modal"><i style="margin-right: 3px" class="fa fa-plus"></i>  Ajouter un Emprunt</a>
                           </button>
                         </div>
                         <form method="post" action="http://libraria.demo.presstigers.com/cart-page.html">
                           <table class="table table-bordered shop_table cart">
                             <thead>
                             <tr>
-                              <th class="product-name">&nbsp;</th>
-                              <th class="product-name">Etudiant</th>
-                              <th class="product-quantity">Livre</th>
+
+                              <th class="product-name">Livre</th>
+                              <th class="product-quantity">Etudiant</th>
                               <th class="product-price">Date Emprunt</th>
-                              <th class="product-subtotal">Notes</th>
+                              <th class="product-subtotal">Date de Retour</th>
                               <th class="product-action">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="cart_item">
-                              <td data-title="cbox" class="product-cbox">
-                                                                            <span>
-                                                                                <input type="checkbox" id="cbox3" value="first_checkbox">
-                                                                            </span>
-                              </td>
+                            <tr *ngFor="let emprunt of listEmprunts" class="cart_item">
+
                               <td data-title="Product" class="product-name">
                                                                             <span class="product-thumbnail">
                                                                                 <a href="#"><img src="../../../assets/images/cart/cart-product-1.jpg" alt="cart-product-1"></a>
                                                                             </span>
                                 <span class="product-detail">
-                                                                                <a href="#"><strong>The Great Gatsby</strong></a>
-                                                                                <span><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                                                                <span><strong>ISBN:</strong> 9781581573268</span>
-                                                                                <span><strong>Fees:</strong> <em>$10</em></span>
+                                                                                <a href="#"><strong>{{getNomLivre(emprunt.empruntPK.idLivre).titre}}</strong></a>
+                                                                                <span><strong>Author:</strong>{{getNomLivre(emprunt.empruntPK.idLivre).auteur}}</span>
                                                                             </span>
                               </td>
                               <td data-title="action" class="product-action">
-                                <div class="dropdown">
-                                  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Edit Hold <b class="caret"></b></a>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#">Edit Hold</a></li>
-                                    <li><a href="#">Cancel Hold</a></li>
-                                    <li><a href="#">Add Another Hold</a></li>
-                                  </ul>
-                                </div>
-                                <div class="addition-action">
-                                  <small>Additional Actions:</small>
-                                  <ul>
-                                    <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-print" aria-hidden="true"></i></a></li>
-                                  </ul>
-                                </div>
+                                <a href="#"><strong>{{getEtudiant(emprunt.empruntPK.idLivre).nom}} {{getEtudiant(emprunt.empruntPK.idLivre).prenom}}</strong></a>
                               </td>
                               <td data-title="Price" class="product-price">
-                                <p><a href="#">Available </a> at 53rd Street Fiction (CLASSICS FIC MORRISON) plus 4 more <a href="#"> see all </a></p>
-                              </td>
-                              <td class="product-remove">
-                                You've placed this item on hold. This item is in your book bag <a href="#">remove</a>
-                              </td>
-                            </tr>
-                            <tr class="cart_item">
-                              <td>
-                                                                            <span data-title="cbox" class="product-cbox">
-                                                                                <input type="checkbox" id="cbox1" value="first_checkbox">
-                                                                            </span>
-                              </td>
-                              <td data-title="Product" class="product-name">
-                                                                            <span class="product-thumbnail">
-                                                                                <a href="#"><img src="../../../assets/images/cart/cart-product-2.jpg" alt="cart-product-2"></a>
-                                                                            </span>
-                                <span class="product-detail">
-                                                                                <a href="#"><strong>The Great Gatsby</strong></a>
-                                                                                <span><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                                                                <span><strong>ISBN:</strong> 9781581573268</span>
-                                                                                <span><strong>Fees:</strong> <em>$10</em></span>
-                                                                            </span>
-                              </td>
-                              <td data-title="action" class="product-action">
-                                <div class="dropdown">
-                                  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Edit Hold <b class="caret"></b></a>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#">Edit Hold</a></li>
-                                    <li><a href="#">Cancel Hold</a></li>
-                                    <li><a href="#">Add Another Hold</a></li>
-                                  </ul>
-                                </div>
-                                <div class="addition-action">
-                                  <small>Additional Actions:</small>
-                                  <ul>
-                                    <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-print" aria-hidden="true"></i></a></li>
-                                  </ul>
-                                </div>
+                                <p>{{emprunt.empruntPK.dateEmprunt |date :'dd-MMM-yyyy '}}</p>
                               </td>
                               <td data-title="Price" class="product-price">
-                                <p><a href="#">Available </a> at 53rd Street Fiction (CLASSICS FIC MORRISON) plus 4 more <a href="#"> see all </a></p>
+                               <p *ngIf="emprunt.dateRetourRee>emprunt.empruntPK.dateEmprunt">{{emprunt.dateRetourRee |date :'dd-MMM-yyyy '}}</p>
                               </td>
-                              <td class="product-remove">
-                                You've placed this item on hold. This item is in your book bag <a href="#">remove</a>
-                              </td>
-                            </tr>
-                            <tr class="cart_item">
-                              <td>
-                                                                            <span data-title="cbox" class="product-cbox">
-                                                                                <input type="checkbox" id="cbox2" value="first_checkbox">
-                                                                            </span>
-                              </td>
-                              <td data-title="Product" class="product-name">
-                                                                            <span class="product-thumbnail">
-                                                                                <a href="#"><img src="../../../assets/images/cart/cart-product-3.jpg" alt="cart-product-3"></a>
-                                                                            </span>
-                                <span class="product-detail">
-                                                                                <a href="#"><strong>The Great Gatsby</strong></a>
-                                                                                <span><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                                                                <span><strong>ISBN:</strong> 9781581573268</span>
-                                                                                <span><strong>Fees:</strong> <em>$10</em></span>
-                                                                            </span>
-                              </td>
-                              <td data-title="action" class="product-action">
-                                <div class="dropdown">
-                                  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Edit Hold <b class="caret"></b></a>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#">Edit Hold</a></li>
-                                    <li><a href="#">Cancel Hold</a></li>
-                                    <li><a href="#">Add Another Hold</a></li>
-                                  </ul>
-                                </div>
-                                <div class="addition-action">
-                                  <small>Additional Actions:</small>
-                                  <ul>
-                                    <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-print" aria-hidden="true"></i></a></li>
-                                  </ul>
-                                </div>
-                              </td>
-                              <td data-title="Price" class="product-price">
-                                <p><a href="#">Available </a> at 53rd Street Fiction (CLASSICS FIC MORRISON) plus 4 more <a href="#"> see all </a></p>
-                              </td>
-                              <td class="product-remove">
-                                You've placed this item on hold. This item is in your book bag <a href="#">remove</a>
+                              <td class="product-action">
+                                <a class="dropdown-toggle" data-toggle="modal" href="#myModalupd" role="button" (click)="selectedValue(emprunt)">Modifier</a>
+                                <a  *ngIf="emprunt.dateRetourRee<emprunt.empruntPK.dateEmprunt" class="dropdown-toggle" (click)="Retour(emprunt)">Retour</a>
+                                <a class="dropdown-toggle" (click)="supprimer(emprunt)">Supprimer</a>
                               </td>
                             </tr>
                             </tbody>
@@ -277,7 +171,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
-        <h3 id="myModalLabelupd">Ajouter un Administrateur</h3>
+        <h3 id="myModalLabelupd">{{methode}} un Emprunt</h3>
       </div>
       <form>
         <div class="vl">
@@ -287,27 +181,21 @@
 
               <div class="panel-body">
 
-                <input  class="form-control" id="nom" name="nom" placeholder="Nom" style="width: 100%;"
-                        type="text"/>
+                <input [(ngModel)]="emprunt.empruntPK.idLivre" class="form-control" id="idLivre" name="idLivre" placeholder="Id Livre"
+                       style="width: 100%;"
+                       type="text"/>
                 <br>
-                <input class="form-control" id="prenom" name="prenom" placeholder="Prenom"
+                <input [(ngModel)]="emprunt.empruntPK.idEtd" class="form-control" id="idEtd" name="idEtd" placeholder="Id Etudiant"
                        style="width: 100%;" type="text"/>
                 <br>
-                <input  class="form-control" id="username" name="username" placeholder="username"
-                        type="text"/>
-                <br>
-                <input * class="form-control" id="password" name="password" placeholder="Password"
-                       type="password" value="secret"/>
-                <br>
-                <input  class="form-control" id="start" min="1960-01-01" max="2021-06-29"
-                        name="date_naiss" name="trip-start"
-                        placeholder="Date de Naissance"
-                        type="date" />
-                <br>
-                <input class="form-control" id="start2" min="1960-01-01" max="2021-06-29"
-                       name="date_embauch" name="trip-start2"
-                       placeholder="Date d'émbauchement"
-                       type="date" />
+                <input *ngIf="methode==='Modifier'" [(ngModel)]="emprunt.dateRetour" class="form-control" id="date" max="2021-06-29"
+                       min="1960-01-01" name="trip-start"
+                       name="date_Retour"
+                       placeholder="Date de Retour" type="date"/>
+                <input *ngIf="methode==='Modifier'" [(ngModel)]="emprunt.dateRetourRee" class="form-control" id="date" max="2021-06-29"
+                       min="1960-01-01" name="trip-start"
+                       name="date_entree"
+                       placeholder="Date de Retour Reel" type="date"/>
               </div>
             </div>
           </div>
@@ -325,7 +213,7 @@
                                            background-color: #F26D35;
                                    margin-left: 0%; " type="button">Annuler
         </button>
-        <button  data-dismiss="modal" aria-hidden="true" class="button" style="  border: none;
+        <button (click)="ajouter()" data-dismiss="modal" aria-hidden="true" class="button" style="  border: none;
                                            color: white;
                                            padding: 10px 20px;
                                            text-align: center;
@@ -333,7 +221,7 @@
                                            font-size: 16px;
                                            border-radius: 12px;
                                            background-color: #F26D35;
-                                   margin-left: 3%; " type="button">Ajouter
+                                   margin-left: 3%; " type="button">{{methode}}
         </button>
       </div>
     </div>

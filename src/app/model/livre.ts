@@ -4,5 +4,5 @@ export class Livre {
   auteur!: string;
   dateCreation: Date = new Date();
   dateEntre: Date = new Date();
-  diponible!: boolean;
+  disponible!: boolean;
 }
