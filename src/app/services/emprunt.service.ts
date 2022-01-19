@@ -24,7 +24,18 @@ export class EmpruntService {
     return this.httpClient.get<Emprunt[]>(this.url);
   }
   public deleteEmprunt (emprunt:Emprunt): Observable<boolean>{
-
     return this.httpClient.put<boolean>(this.url+emprunt.empruntPK.idLivre,emprunt);
+  }
+  public nbEmpByMonth (datedeb: string, datefin: string): Observable<number>{
+    return this.httpClient.get<number>(this.url + datedeb + "&" + datefin )
+  }
+  public nbEmpEnCours (): Observable<number>{
+    return this.httpClient.get<number>(this.url + "encours");
+  }
+  public nbEmpEnRetard (): Observable<number>{
+    return this.httpClient.get<number>(this.url + "retard");
+  }
+  public nbEmpDansDelai (): Observable<number>{
+    return this.httpClient.get<number>(this.url + "dansdelai");
   }
 }
