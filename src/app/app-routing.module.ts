@@ -9,8 +9,9 @@ import {ListBorrowedBooksComponent} from "./components/list-borrowed-books/list-
 import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
-  {path : '', component: HomeComponent},
+  {path : '', component: SigninComponent},
   {path: 'signin', component: SigninComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'livre', component: LivreComponent},
   {path: 'list-student', component: ListStudentComponent},
   {path: 'list-admins', component: ListAdminsComponent},

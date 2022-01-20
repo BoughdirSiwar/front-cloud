@@ -8,7 +8,11 @@ import {Observable} from "rxjs";
 })
 export class AdminService {
   url = "http://localhost:9001/admins/"
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
+  public login (login: string, password: string): Observable<boolean>{
+    return this.httpClient.get<boolean>(this.url + login + '&' + password);
+  }
   public addAdmin (admin: Admin): Observable<Admin>{
     return this.httpClient.post<Admin>(this.url, admin);
   }
